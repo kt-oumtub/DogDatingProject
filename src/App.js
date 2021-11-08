@@ -4,7 +4,7 @@ import {StyleSheet, Text, View} from 'react-native';
 export default function App() {
   return (
     <View>
-      <Text>Rework Projectsdfgsdg</Text>
+      <Text>Rework Project</Text>
     </View>
   );
 }
