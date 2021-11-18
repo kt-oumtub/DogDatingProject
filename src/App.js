@@ -1,20 +1,33 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {View, Text} from 'react-native';
+
+import Login from './screens/Login';
+import Register from './screens/Register';
+import Home from './screens/Home';
 
 export default function App() {
+  const Stack = createStackNavigator();
+
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text
-        style={{
-          fontSize: 40,
-          fontWeight: 'bold',
-          color: '#000',
-          textDecorationLine: 'underline',
-        }}>
-        Rework Project
-      </Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Home" component={Home} />
+        {/* <Stack.Screen name="AddDog" component={AddDog} />
+        <Stack.Screen name="DogProfile" component={DogProfile} />
+        <Stack.Screen name="EditProfile" component={EditProfile} />
+        <Stack.Screen name="ChatRoom" component={ChatRoom} />
+        <Stack.Screen name="ChatScreen" component={ChatScreen} />
+        <Stack.Screen name="EditDogProfile" component={EditDogProfile} /> */}
+
+        {/* Guset */}
+        {/* <Stack.Screen name="GuestHome" component={GuestHome} /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({});
