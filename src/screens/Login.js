@@ -35,8 +35,7 @@ export default function Login({navigation}) {
     } else {
       let result = new LoginController().do_Login(username, password);
       if (result === 'pass') {
-        //   navigation.navigate('Home', username);
-        alert('Login');
+        navigation.navigate('Home', 'Member');
       } else {
         console.log('fail');
         alert('Username or Password is not correct\nPlease try again');
@@ -49,7 +48,8 @@ export default function Login({navigation}) {
   }
 
   function onTextGuest() {
-    // navigation.navigate('GuestHome');
+    new LoginController().setCurrentUser('Guest');
+    navigation.navigate('Home', 'Guest');
   }
 
   useEffect(() => {
@@ -191,9 +191,17 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     borderRadius: 8,
-    borderWidth: 1.11,
+    // borderWidth: 1.11,
     height: 60,
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    elevation: 9,
   },
   sigInFont: {
     fontSize: 24,

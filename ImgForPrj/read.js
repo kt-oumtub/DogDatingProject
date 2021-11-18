@@ -1,0 +1,3 @@
+/*
+    add picture to emulator for register
+*/

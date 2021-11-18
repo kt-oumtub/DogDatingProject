@@ -1,6 +1,6 @@
 import firebaseConnection from '../../firebaseConnection';
 
-var currentUser;
+let currentUser;
 export default class LoginController {
   do_Login(username, password) {
     let userCorrect = false;
@@ -24,11 +24,14 @@ export default class LoginController {
         });
     }
     if (userCorrect === true && passCorrect === true) {
-      currentUser = username;
+      this.setCurrentUser(username);
       return 'pass';
     } else {
       return 'fail';
     }
+  }
+  setCurrentUser(username) {
+    currentUser = username;
   }
 
   getCurrentUser() {
@@ -36,6 +39,11 @@ export default class LoginController {
   }
 
   provokeFirebase() {
+    /*
+        this function make for provoke firebase
+        first time on run app firebase is slow 
+        this function for fix
+    */
     let provoke = [];
     firebaseConnection
       .database()
